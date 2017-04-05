@@ -197,7 +197,7 @@
 
                 //避免圖太大
                 var max_size = 1000;
-                if (document.getElementById("ch_max_1000").checked) {
+                if (document.getElementById("ch_max_1000").checked) {//如果圖片太大，就先縮小在進行轉換
 
                     if (wid > max_size || hei > max_size) {
                         var w01 = wid / max_size;
@@ -227,7 +227,7 @@
 
                     }
 
-                } else {
+                } else {//不縮小圖片直接進行轉換
 
                     fun(obj_img);//圖片載入完成後執行轉換
                     document.getElementById("img").src = src;
@@ -235,7 +235,7 @@
 
 
 
-                document.getElementById("file_input").value = "";
+                document.getElementById("file_input").value = "";//避免無法開啟相同的圖片
 
             }
 
@@ -250,8 +250,6 @@
             //var obj_img = document.getElementById("img");
             var wid = obj_img.naturalWidth;
             var hei = obj_img.naturalHeight;
-
-
 
 
             //設定canvas物件
