@@ -6,6 +6,9 @@
     <meta charset="utf-8" />
     <title>隱形圖片 線上轉換</title>
 
+    <script src="jscolor.js"></script>
+
+
     <style type="text/css">
         html, body {
             margin: 0px;
@@ -17,10 +20,10 @@
             font-family: "微軟正黑體";
             color: #FFF;
             margin: 5px;
-            transition:    background-color 1s ;
+            transition: background-color 1s;
         }
 
-        canvas {
+        .can {
             width: 0px;
             height: 0px;
         }
@@ -33,6 +36,7 @@
         tr, td {
             border: 1px solid #808080;
         }
+
 
         td {
             text-align: center;
@@ -59,6 +63,17 @@
         a[href] {
             color: rgb(15, 189, 255) !important;
         }
+
+        input {
+            font-family: "微軟正黑體";
+            border: 1px solid #808080;
+        }
+
+        label {
+            white-space: nowrap;
+            margin: 10px 10px 10px 0px;
+            display: inline-block;
+        }
     </style>
 
 
@@ -70,14 +85,25 @@
     <div onclick='document.getElementById("file_input").click()' class="but">開啟圖片</div>
     <input style="display:none" type="file" id="file_input" accept="image/*" />
     <br>
+
+
+    <label>
+        <input type="checkbox" id="ch_reverse"><a style="font-size:20px;"> 反轉顏色</a>
+    </label>
+
+    <label>
+        <input type="checkbox" id="ch_max_1000" /><a style="font-size:20px;"> 最大限制1000px</a>
+    </label>
+
+    <label>
+        <input type="checkbox" id="bac_white" /><a style="font-size:20px;">開燈</a>
+    </label>
+
+    <label>
+        填充顏色 <input class="jscolor" type="text" id="col" value="fffff">
+    </label>
+
     <br>
-    <label><input type="checkbox" id="ch_reverse"><a style="font-size:20px;"> 反轉顏色　</a></label>
- 
-    <label><input type="checkbox" id="ch_max_1000" /><a style="font-size:20px;"> 最大限制1000px　</a></label>
-
-    <label><input type="checkbox" id="bac_white" /><a style="font-size:20px;">開燈</a></label>
-
-    <br><br>
 
 
     <table id="table" style="width:100%;display:none;" border="1">
@@ -95,8 +121,8 @@
         </tr>
     </table>
 
-    <canvas id="can"> </canvas>
-    <canvas id="can_2"> </canvas>
+    <canvas id="can" class="can"> </canvas>
+    <canvas id="can_2" class="can"> </canvas>
 
 
 
@@ -104,8 +130,9 @@
 
     <br>
     說明：將圖片轉換成單色的半透明隱形圖片。<br>
-
+    版本：1.0.2
     <ul>
+      
         <li>
             作者：<a href="https://home.gamer.com.tw/homeindex.php?owner=hbl917070" target="_blank">hbl917070 (深海異音)</a>
         </li>
@@ -142,8 +169,8 @@
             document.getElementById("ch_reverse").checked = false;
             document.getElementById("ch_max_1000").checked = true;
             document.getElementById("bac_white").checked = false;
-            
-            
+
+
 
 
 
@@ -277,13 +304,19 @@
 
             var bool_反轉 = document.getElementById("ch_reverse").checked;
 
+            var col_r = parseInt(document.getElementById("col").value.substr(0, 2),16);
+            var col_g = parseInt(document.getElementById("col").value.substr(2, 2),16);
+            var col_b = parseInt(document.getElementById("col").value.substr(4, 2),16);
+        
+         
+
             for (var i = 0; i < wid; i++) {
                 for (var j = 0; j < hei; j++) {
 
                     var k = (wid * j + i) * 4;
-                    r.data[k + 0] = 255;//r
-                    r.data[k + 1] = 255;//g
-                    r.data[k + 2] = 255;//b
+                    r.data[k + 0] = col_r;//r
+                    r.data[k + 1] = col_g;//g
+                    r.data[k + 2] = col_b;//b
                     //r.data[k + 3] = s.data[k];//使用r來判斷深淺
 
                     var gray = (s.data[0] + s.data[k + 1] + s.data[k + 2]) / 3;//灰階
