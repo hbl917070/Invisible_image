@@ -26,6 +26,8 @@
         .can {
             width: 0px;
             height: 0px;
+            /*width: 30vw;
+            height: 30vw;*/
         }
 
         table {
@@ -50,6 +52,12 @@
             background-color: rgb(0, 148, 255);
             font-size: 20px;
             display: inline-block;
+                      /*禁止選取*/
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
             .but:active {
@@ -78,8 +86,13 @@
             font-size: 20px;
             height: 40px;
             line-height: 40px;
+            /*禁止選取*/
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-
     </style>
 
 
@@ -244,8 +257,6 @@
                     document.getElementById("img").src = src;
                 }
 
-
-
                 document.getElementById("file_input").value = "";//避免無法開啟相同的圖片
 
             }
@@ -261,35 +272,31 @@
             var wid = obj_img.naturalWidth;
             var hei = obj_img.naturalHeight;
 
-
-            //設定canvas物件
+            //原圖的canvas物件
             var can = document.getElementById("can");
             can.width = wid;
             can.height = hei;
-
             c = can.getContext("2d");
             c.drawImage(obj_img, 0, 0, wid, hei);
 
-
+            //要被寫入的canvas物件
             var can_2 = document.getElementById("can_2");
             can_2.width = wid;
             can_2.height = hei;
-
             c_2 = can_2.getContext("2d");
-            c_2.clearRect(0, 0, wid, hei);  //清空      
 
 
             //轉換
-            var s = c.getImageData(0, 0, wid, hei);
-            var r = c.createImageData(wid, hei);
+            var s = c.getImageData(0, 0, wid, hei);//從原圖取得每個像素點
+            var r = c_2.createImageData(wid, hei);//新建一個空白的
 
+
+            //轉換的屬性
             var bool_反轉 = document.getElementById("ch_reverse").checked;
-
             var col_r = parseInt(document.getElementById("col").value.substr(0, 2), 16);
             var col_g = parseInt(document.getElementById("col").value.substr(2, 2), 16);
             var col_b = parseInt(document.getElementById("col").value.substr(4, 2), 16);
 
-            var bool_t = true;
 
             for (var i = 0; i < wid; i++) {
                 for (var j = 0; j < hei; j++) {
@@ -300,25 +307,23 @@
                     r.data[k + 2] = col_b;//b
                     //r.data[k + 3] = s.data[k];//使用r來判斷深淺
 
-                    if (bool_t) {
-                        document.getElementById("div_test").innerHTML = "R:" + r.data[k + 0] + " G:" + r.data[k + 1] + " B:" + r.data[k + 2];
-                        bool_t = false;
-                    }
-
                     var gray = (s.data[0] + s.data[k + 1] + s.data[k + 2]) / 3;//灰階
                     if (bool_反轉) {
                         r.data[k + 3] = 255 - gray;//a
                     } else {
                         r.data[k + 3] = gray;//a
                     }
-
                 }
-
             }
+
+            c_2.getImageData(0, 0, wid, hei);//不知為啥手機版的chrome需要這行，不然會有底色是灰色的BUG
 
             c_2.putImageData(r, 0, 0);//繪製canvas
             document.getElementById("img2").src = can_2.toDataURL('image/png', 0.8);//輸出成圖片
 
+
+            c.clearRect(0, 0, wid, hei);  //清空
+            c_2.clearRect(0, 0, wid, hei);  //清空
         }
 
 
@@ -326,11 +331,9 @@
 
 
 
-    <div id="div_test"></div>
-
     <br>
     說明：將圖片轉換成單色的半透明隱形圖片。<br>
-    版本：1.0.53
+    版本：1.0.6
 
     <ul>
         <li>
