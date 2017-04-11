@@ -288,6 +288,7 @@
             var col_g = parseInt(document.getElementById("col").value.substr(2, 2), 16);
             var col_b = parseInt(document.getElementById("col").value.substr(4, 2), 16);
 
+            var bool_t = true;
 
             for (var i = 0; i < wid; i++) {
                 for (var j = 0; j < hei; j++) {
@@ -297,6 +298,11 @@
                     r.data[k + 1] = col_g;//g
                     r.data[k + 2] = col_b;//b
                     //r.data[k + 3] = s.data[k];//使用r來判斷深淺
+
+                    if (bool_t) {
+                        document.getElementById("div_test").innerHTML = "R:" + r.data[k + 0] + " G:" + r.data[k + 1] + " B:" + r.data[k + 2];
+                        bool_t = false;
+                    }
 
                     var gray = (s.data[0] + s.data[k + 1] + s.data[k + 2]) / 3;//灰階
                     if (bool_反轉) {
@@ -319,10 +325,11 @@
 
 
 
+    <div id="div_test"></div>
 
     <br>
     說明：將圖片轉換成單色的半透明隱形圖片。<br>
-    版本：1.0.51
+    版本：1.0.52
 
     <ul>
         <li>
