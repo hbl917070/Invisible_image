@@ -1438,7 +1438,9 @@ var jsc = {
 			p.wrap.style.width = (dims[0] + 2 * THIS.borderWidth) + 'px';
 			p.wrap.style.height = (dims[1] + 2 * THIS.borderWidth) + 'px';
 			p.wrap.style.zIndex = THIS.zIndex;
-			p.wrap.id="color_box";
+			//p.wrap.id="color_box";
+			p.wrap.style.touchAction = "none";
+			p.wrap.style.msTouchAction = "none";
 			
 			// picker
 			p.box.style.width = dims[0] + 'px';

@@ -80,10 +80,6 @@
             line-height: 40px;
         }
 
-        #color_box {
-         -ms-touch-action: none;
-      touch-action: none;
-        }
     </style>
 
 
@@ -136,29 +132,7 @@
     <canvas id="can_2" class="can"> </canvas>
 
 
-
-
-
-    <br>
-    說明：將圖片轉換成單色的半透明隱形圖片。<br>
-    版本：1.0.41
-
-    <ul>
-        <li>
-            作者：<a href="https://home.gamer.com.tw/homeindex.php?owner=hbl917070" target="_blank">hbl917070 (深海異音)</a>
-        </li>
-        <li>如果是手機，盡量不要丟很大的圖片然後又把最大限制的勾拿掉，不然可能會讓瀏覽器閃退。</li>
-        <li>電腦版右鍵儲存圖片；手機版長按圖片儲存。</li>
-    </ul>
-
-
-
-
-
-
-
-
-    <script>
+    <script type="text/javascript">
 
         window.onload = function () {
 
@@ -284,7 +258,6 @@
         function fun(obj_img) {
 
             //取得圖片物件
-            //var obj_img = document.getElementById("img");
             var wid = obj_img.naturalWidth;
             var hei = obj_img.naturalHeight;
 
@@ -305,9 +278,6 @@
             c_2 = can_2.getContext("2d");
 
 
-
-
-
             //轉換
             var s = c.getImageData(0, 0, wid, hei);
             var r = c.createImageData(wid, hei);
@@ -317,7 +287,6 @@
             var col_r = parseInt(document.getElementById("col").value.substr(0, 2), 16);
             var col_g = parseInt(document.getElementById("col").value.substr(2, 2), 16);
             var col_b = parseInt(document.getElementById("col").value.substr(4, 2), 16);
-
 
 
             for (var i = 0; i < wid; i++) {
@@ -336,7 +305,6 @@
                         r.data[k + 3] = gray;//a
                     }
 
-
                 }
 
             }
@@ -344,15 +312,34 @@
             c_2.putImageData(r, 0, 0);//繪製canvas
             document.getElementById("img2").src = can_2.toDataURL('image/png', 0.8);//輸出成圖片
 
-
-
-
         }
 
 
-
-
     </script>
+
+
+
+
+    <br>
+    說明：將圖片轉換成單色的半透明隱形圖片。<br>
+    版本：1.0.5
+
+    <ul>
+        <li>
+            作者：<a href="https://home.gamer.com.tw/homeindex.php?owner=hbl917070" target="_blank">hbl917070 (深海異音)</a>
+        </li>
+        <li>如果是手機，盡量不要丟很大的圖片然後又把最大限制的勾拿掉，不然可能會讓瀏覽器閃退。</li>
+        <li>電腦版右鍵儲存圖片；手機版長按圖片儲存。</li>
+        <li>討論區：<a href="https://forum.gamer.com.tw/C.php?bsn=60076&snA=3879307" target="_blank">討論區</a></li>
+    </ul>
+
+
+
+
+
+
+
+
 
 </body>
 </html>
