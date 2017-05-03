@@ -307,7 +307,7 @@
                     r.data[k + 2] = col_b;//b
                     //r.data[k + 3] = s.data[k];//使用r來判斷深淺
 
-                    var gray = (s.data[0] + s.data[k + 1] + s.data[k + 2]) / 3;//灰階
+                    var gray = (s.data[k + 0] + s.data[k + 1] + s.data[k + 2]) / 3;//灰階
                     if (bool_反轉) {
                         r.data[k + 3] = 255 - gray;//a
                     } else {
