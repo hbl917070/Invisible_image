@@ -1,0 +1,218 @@
+﻿html,
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Microsoft JhengHei";
+    background-color: rgb(240, 240, 240);
+}
+
+@media screen and (max-width: 992px) {
+    #main_l {
+        display: none;
+    }
+
+    #main_r {
+        margin-left: 0px !important;
+    }
+}
+
+#main_div {
+}
+
+
+/*pc 側邊選單*/
+#main_l {
+    min-height: 100vh;
+    width: 240px;
+    background: rgb(245, 245, 245);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 1;
+    font-weight: 500;
+}
+
+.main_l_item {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    padding: 0px;
+    padding-left: 30px;
+    font-size: 16px;
+    color: #000000 !important;
+}
+
+    .main_l_item:hover {
+        background-color: rgb(233, 233, 233);
+        transition: all 0s;
+    }
+
+.main_l_item_title {
+    color: #26a69a;
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+.main_l_item_hr {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.main_l_item[sel="1"]::after {
+    content: "";
+    height: 100%;
+    width: 6px;
+    background-color: #26a69a;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+/* 左上角的logo*/
+#menu_pc_logo {
+    width: 100px;
+    margin: 20px auto;
+    display: block;
+}
+
+#main_r {
+    margin-left: 240px;
+}
+
+/*--------------------------*/
+/*--------------------------*/
+/*--------------------------*/
+
+.page {
+    overflow: hidden;
+}
+
+.page_title h1 {
+    height: 60px;
+    line-height: 60px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    /* color: #26a69a;
+  background-color:  rgb(248, 248, 248); */
+    color: rgb(0, 0, 0);
+    background-color: rgb(245, 245, 245);
+    padding: 0px 15px;
+    margin: 0px;
+}
+
+.page_content {
+    padding: 15px;
+}
+
+.page_box {
+    max-width: 800px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    background-color: rgb(248, 248, 248);
+    padding: 30px 10px;
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.page_box_title {
+    max-width: 800px;
+    margin: auto;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #26a69a;
+}
+
+.page_box .btn {
+    font-size: 16px;
+}
+
+input[type="range"] {
+    border: none;
+}
+
+/*-------------------------*/
+
+/*設定的「開關」*/
+.mdl-switch {
+    float: right;
+    width: 40px;
+}
+
+/*設定的「文字方塊」*/
+.text_nub {
+    font-size: 18px !important;
+    width: 225px !important;
+    text-align: center;
+}
+/*設定的「顏色選擇器」*/
+.color_sel {
+    width: 180px !important;
+    font-size: 18px !important;
+}
+
+/*無框線的表格*/
+.table_no_line tr {
+    border: none;
+}
+
+/*上傳圖片後的預覽圖*/
+.input_img_show {
+    border: 1px solid #8b8b8b;
+    width: 202px;
+    height: 202px;
+    position: relative;
+    float: left;
+}
+
+    .input_img_show img {
+        max-width: 200px;
+        max-height: 200px;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+    }
+
+#p2_select_align {
+    width: 20px !important;
+}
+
+
+.div_aut {
+    text-align: center;
+}
+
+.bottom_img {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+}
+
+    .bottom_img:hover {
+        background-color: rgba(0, 183, 255, 0.301);
+    }
+
+    .bottom_img img {
+        width: 80px;
+    }
+
+
+/**/
+
+.p_home_title {
+    font-size: 30px;
+        margin:10px 0px;
+}

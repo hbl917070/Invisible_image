@@ -1,363 +1,625 @@
 ﻿<!DOCTYPE html>
-
-<html lang="zh-TW">
+<html lang="zh-tw">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <meta charset="utf-8" />
-    <title>隱形圖片 線上製作</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>隱形圖片產生器</title>
 
-    <script src="jscolor.js"></script>
+    <!--手機自動縮放版面-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=0" />
 
+    <!--頁籤上的圖示-->
+    <link rel="Shortcut Icon" type="image/x-icon" href="imgs/logo_16.ico" />
 
-    <style type="text/css">
-        html, body {
-            margin: 0px;
-            padding: 0px;
-        }
+    <!--關鍵字-->
+    <meta name="KeyWords"
+          content="隱形圖片,透明圖片,單色圖片,偽裝圖片,製作,產生,合成,線上,hbl917070,深海異音" />
 
-        html {
-            background-color: rgb(0, 0, 0);
-            font-family: "微軟正黑體";
-            color: #FFF;
-            margin: 5px;
-            transition: background-color 1s;
-        }
-
-        .can {
-            width: 0px;
-            height: 0px;
-            /*width: 30vw;
-            height: 30vw;*/
-        }
-
-        table {
-            border: 1px solid #808080;
-            border-collapse: collapse;
-        }
-
-        tr, td {
-            border: 1px solid #808080;
-        }
+    <!--網站說明-->
+    <meta name="Description"
+          content="線上製作隱形圖片與偽裝圖片，利用單一顏色繪製圖片，讓圖片只能在黑底的地方顯示，或是在黑色與白色的地方，顯示出不同的圖片" />
 
 
-        td {
-            text-align: center;
-            font-size: 20px;
-            padding: 10px;
-        }
+    <!--Import Google Icon Font-->
+    <link href="css/icon.css"
+          rel="stylesheet" />
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" media="screen,projection" />
 
-        .but {
-            padding: 10px;
-            color: #FFF;
-            background-color: rgb(0, 148, 255);
-            font-size: 20px;
-            display: inline-block;
-                      /*禁止選取*/
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-            .but:active {
-                background-color: rgb(167, 0, 255);
-            }
-
-        input[type=checkbox] {
-            transform: scale(1.5);
-        }
-
-        a[href] {
-            color: rgb(15, 189, 255) !important;
-        }
-
-        #col {
-            font-family: "微軟正黑體";
-            border: 1px solid #808080;
-            width: 80px;
-            transform: translateY(-2px);
-        }
-
-        label {
-            white-space: nowrap;
-            margin: 10px 10px 0px 0px;
-            display: inline-block;
-            font-size: 20px;
-            height: 40px;
-            line-height: 40px;
-            /*禁止選取*/
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
-
-
-
+    <link type="text/css" rel="stylesheet" href="css/window.css" media="screen,projection" />
 </head>
+
 <body>
 
+    <div id="main_div">
 
-    <div onclick='document.getElementById("file_input").click()' class="but">載入圖片</div>
-    <input style="display:none" type="file" id="file_input" accept="image/*" />
-    <br>
+        <!--電腦-側邊選單-->
+        <div id="main_l">
 
-    <label title="選擇要用來填充圖片的顏色">
-        填充顏色 <input class="jscolor" type="text" id="col" value="fffff">
-    </label>
-
-    <label title="原本透明的區域會變成實色，實色的區域則反之">
-        <input type="checkbox" id="ch_reverse"> 反轉顏色
-    </label>
-
-    <label title="圖片的最大寬度與高度限制在1000，避免轉換太久">
-        <input type="checkbox" id="ch_max_1000" /> 最大限制1000px
-    </label>
-
-    <label title="把網頁的背景切換成白色">
-        <input type="checkbox" id="bac_white" />開燈
-    </label>
+            <img id="menu_pc_logo" src="imgs/logo_256.png" />
 
 
+            <div class="main_l_item_title">功能</div>
+            <a class="main_l_item waves-effect" id="item_home" href="#p_home">
+                首頁
+            </a>
+            <a class="main_l_item waves-effect" id="item_1" href="#p_1">
+                隱形圖片
+            </a>
+            <a class="main_l_item waves-effect" id="item_2" href="#p_2">
+                偽裝圖片
+            </a>
 
-    <br>
+            <div class="main_l_item_hr"></div>
 
+            <div class="main_l_item_title">作者</div>
+            <a class="main_l_item waves-effect" id="item_about" href="#p_about">
+                hbl917070(深海異音)
+            </a>
+            <!--<a class="main_l_item waves-effect"
+                 id="item_other">
+                其他作品
+            </a>-->
 
-    <table id="table" style="width:100%;display:none; margin-top:10px;" border="1">
-        <tr style="width:100%">
-            <td width="50%">原圖</td>
-            <td width="50%">轉換後</td>
-        </tr>
-        <tr style="width:100%">
-            <td width="50%">
-                <img id="img" style="width:100%" />
-            </td>
-            <td width="50%">
-                <img id="img2" style="width:100%" />
-            </td>
-        </tr>
-    </table>
+            <div class="main_l_item_hr"></div>
 
-    <canvas id="can" class="can"> </canvas>
-    <canvas id="can_2" class="can"> </canvas>
+            <div class="main_l_item_title">其他</div>
+            <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
+            <a class="main_l_item waves-effect " href="" target="_blank">討論區</a>
+        </div>
+        <div id="main_r"></div>
+    </div>
 
+    <!-- p_home 開始 -->
+    <div id="p_home" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                首頁
+            </h1>
+        </div>
 
-    <script type="text/javascript">
-
-        window.onload = function () {
-
-            //初始化
-            document.getElementById("ch_reverse").checked = false;
-            document.getElementById("ch_max_1000").checked = true;
-            document.getElementById("bac_white").checked = false;
-
-
-            //開燈或關燈
-            document.getElementById("bac_white").onchange = function (e) {
-                var obj_html = document.getElementsByTagName("html")[0];
-
-                if (document.getElementById("bac_white").checked) {
-                    obj_html.style.backgroundColor = "#fff";
-                    obj_html.style.color = "#000";
-                } else {
-                    obj_html.style.backgroundColor = "rgb(0, 0, 0)";
-                    obj_html.style.color = "#fff";
-                }
-            }
+        <div class="page_content">
 
 
+            <h2 class="page_box_title">線上製作</h2>
+            <div class="page_box">
+
+                <h3 class="p_home_title">隱形圖片</h3>
+                利用單一顏色與不同透明度來繪製圖片，讓圖片在特定的底色下會隱形
+                <br>
+                <a href="#p_1" class="waves-effect waves-light btn ">
+                    製作隱形圖片
+                </a>
+                <br>  <br>
+                <h3 class="p_home_title">偽裝圖片</h3>
+                利用隱形圖片的技術重疊兩張圖片，在黑色與白色的情形下，會分別看到兩種不同的圖片
+                <br>
+                <a href="#p_2" class="waves-effect waves-light btn">
+                    製作偽裝圖片
+                </a>
+            </div>
+
+            <h2 class="page_box_title">隱形圖片 說明</h2>
+            <div class="page_box" style="text-align:center">
+                <img src="imgs/p1_ex.jpg" style="max-width:100%;" />
+            </div>
+
+            <h2 class="page_box_title">偽裝圖片 說明</h2>
+            <div class="page_box" style="text-align:center">
+                <img src="imgs/p2_ex.jpg" style="max-width:100%;" />
+            </div>
+
+        </div>
+    </div>
+    <!-- p_home 結束 -->
+    <!-- p_1 開始 -->
+    <div id="p_1" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                隱形圖片
+            </h1>
+        </div>
+
+      
+
+        <div class="page_content">
+            <h2 class="page_box_title">說明</h2>
+            <div class="page_box">
+                說明：處理後的圖片，在白色的背景的網頁會完全隱形，只有在黑色背景的地方才看得到。
+                <br />
+                原理：使用單一顏色，不同透明度來繪製圖片。
+            </div>
+
+            <h2 class="page_box_title">匯入圖片</h2>
+            <div class="page_box">
+
+                <p>選擇一張圖片</p>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span> 載入圖片 <i class="material-icons left">image</i> </span>
+                        <input type="file" id="p1_file" accept="image/*" />
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" />
+                    </div>
+                </div>
+
+                <div style="overflow: auto">
+                    <div class="input_img_show">
+                        <img id="p1_img"
+                             onload="$('#p1_img_size').html('W:'+this.naturalWidth+'<br>H:'+this.naturalHeight)" />
+                    </div>
+                    <div style="float:left; margin-left:10px;" id="p1_img_size"></div>
+                </div>
+    
+
+            </div>
+
+            <h2 class="page_box_title">設定</h2>
+            <div class="page_box">
+                <table style="width:350px;" class="table_no_line">
+              
+                    <tr>
+                        <td>限制圖片<br />最大寬度</td>
+                        <td style="text-align: right;">
+                            <input type="number" class="text_nub" id="p1_max_width" value="1500" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>填充顏色</td>
+                        <td style="text-align: right;">
+                            <input type="text"
+                                   id="p1_rgba"
+                                   class="form-control color_sel"
+                                   data-format="rgb"
+                                 
+                                   value="rgba(255, 255, 255)" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>反轉填充</td>
+                        <td style="text-align: right;">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="p1_ch_reverse" />
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+
+             
+                </table>
+
+                <br />
+
+                <a class="waves-effect waves-light btn" id="p1_but_run">
+                    產生圖片 <i class="material-icons left">done</i>
+                </a>
+            </div>
+
+            <h2 class="page_box_title">輸出</h2>
+            <div class="page_box">
+                嘗試拖曳滑桿，觀看圖片在黑色與白色的地方呈現的效果
+
+                <table style="width: 280px;">
+                    <tr>
+                        <td>
+                            <i class="material-icons" style="margin-top:5px">brightness_high</i>
+                        </td>
+                        <td>
+                            <div id="p1_range_output_color" style="width:200px;"></div>
+                        </td>
+                        <td>
+                            <i class="material-icons" style="margin-top:5px">brightness_2</i>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="height:10px"></div>
+
+                <div id="p1_div_output"
+                     style="text-align: center; background-color: rgb(128,128,128)">
+
+                    <img id="p1_output_img"
+                         style="margin: 10px; max-width:calc(100% - 20px);" />
+
+                </div>
+
+                <a href="" id="p1_download" download="df.png" target="_blank" class="waves-effect waves-light btn">
+                    下載圖片 <i class="material-icons left">cloud_download</i>
+                </a>
+            </div>
+        </div>
 
 
-            //選取圖片
-            var input = document.getElementById("file_input");
 
-            if (typeof FileReader === 'undefined') {
-                alert("抱歉，你的瀏覽器不支持 FileReader");
-                input.setAttribute('disabled', 'disabled');
-            } else {
-                input.addEventListener('change', readFile, false);
-            }
+    </div>
+    <!-- p_1 結束 -->
+    <!-- p_2 開始 -->
+    <div id="p_2" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                偽裝圖片
+            </h1>
+        </div>
+
+        <div class="page_content">
+            <h2 class="page_box_title">說明</h2>
+            <div class="page_box">
+                說明：利用隱形圖片的技術重疊兩張圖片，在黑色與白色的情形下，會分別看到兩種不同的圖片
+            </div>
+
+            <h2 class="page_box_title">匯入圖片</h2>
+            <div class="page_box">
+                <p>圖１：白色時才會顯示出來的圖片</p>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span> 載入圖片 <i class="material-icons left">image</i> </span>
+                        <input type="file" id="p2_file_1" accept="image/*" />
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" />
+                    </div>
+                </div>
+
+                <div style="overflow: auto">
+                    <div class="input_img_show">
+                        <img id="p2_img_1"
+                             onload="$('#p2_img_size_1').html('W:'+this.naturalWidth+'<br>H:'+this.naturalHeight)" />
+                    </div>
+                    <div style="float:left; margin-left:10px;" id="p2_img_size_1"></div>
+                </div>
+
+                <div style="height:50px;"></div>
+
+                <p>圖２：黑色時才會顯示出來的圖片</p>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span> 載入圖片 <i class="material-icons left">image</i> </span>
+                        <input type="file" id="p2_file_2" accept="image/*" />
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" />
+                    </div>
+                </div>
+
+                <!--預覽圖-->
+                <div style="overflow: auto">
+                    <div class="input_img_show">
+                        <img id="p2_img_2"
+                             onload="$('#p2_img_size_2').html('W:'+this.naturalWidth+'<br>H:'+this.naturalHeight)" />
+                    </div>
+                    <!--載入圖片後，自動顯示size-->
+                    <div style="float:left; margin-left:10px;" id="p2_img_size_2"></div>
+                </div>
+
+            </div>
+
+            <h2 class="page_box_title">設定</h2>
+            <div class="page_box">
+                <table style="width:350px;" class="table_no_line">
+                    <tr>
+                        <td>圖片貼齊</td>
+                        <td style="width:140px;text-align: center">
+                            <select id="p2_select_align">
+                                <option value="0" select>中央</option>
+                                <option value="1">左上</option>
+                                <option value="2">上</option>
+                                <option value="3">右上</option>
+                                <option value="4">右</option>
+                                <option value="5">右下</option>
+                                <option value="6">下</option>
+                                <option value="7">左下</option>
+                                <option value="8">左</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>限制圖片<br />最大寬度</td>
+                        <td style="text-align: right;">
+                            <input type="number" class="text_nub" id="p2_max_width" value="1500" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>填充顏色</td>
+                        <td style="text-align: right;">
+                            <input type="text"
+                                   id="p2_rgba_01"
+                                   class="form-control color_sel"
+                                   data-format="rgb"
+                                   data-opacity=".5"
+                                   value="rgba(0, 0, 0, 0.15)" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>圖１：<br />反轉填充</td>
+                        <td style="text-align: right;">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="p2_ch_reverse_01" />
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>圖２：<br />反轉填充</td>
+                        <td style="text-align: right;">
+                            <div class="switch">
+                                <label>
+                                    <input type="checkbox" id="p2_ch_reverse_02" />
+                                    <span class="lever"></span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <br />
+
+                <a class="waves-effect waves-light btn" id="p2_but_run">
+                    產生圖片 <i class="material-icons left">done</i>
+                </a>
+            </div>
+
+            <h2 class="page_box_title">輸出</h2>
+            <div class="page_box">
+                嘗試拖曳滑桿，觀看圖片在黑色與白色的地方呈現的效果
+
+                <table style="width: 280px;">
+                    <tr>
+                        <td>
+                            <i class="material-icons" style="margin-top:5px">brightness_high</i>
+                        </td>
+                        <td>
+                            <div id="p2_range_output_color" style="width:200px;"></div>
+                        </td>
+                        <td>
+                            <i class="material-icons" style="margin-top:5px">brightness_2</i>
+                        </td>
+                    </tr>
+                </table>
+
+                <div style="height:10px"></div>
+
+                <div id="p2_div_output"
+                     style="text-align: center; background-color: rgb(128,128,128)">
 
 
+                    <img id="p2_output_img" 
+                         style="margin: 10px; max-width:calc(100% - 20px);" />
 
-            function readFile() {
-                var file = this.files[0];
-                if (!/image\/\w+/.test(file.type)) {
-                    alert("文件必須為圖片！");
-                    return false;
-                }
-                var reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function (e) {
-                    var src = this.result;//把載入的檔案變成圖片網址
+                </div>
 
-                    fun_載入圖片(src);
-                    document.getElementById("table").style.display = "table";//第一次執行後就顯示輸出結果
+                <a href="" id="p2_download" download="df.png" target="_blank" class="waves-effect waves-light btn">
+                    下載圖片 <i class="material-icons left">cloud_download</i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- p_2 結束 -->
+    <!-- p_about 開始 -->
+    <div id="p_about" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                作者
+            </h1>
+        </div>
 
-                }
-            }
+        <div class="page_content">
+            <h2 class="page_box_title">作者</h2>
+            <div class="page_box">
+                <div class="bottom wow zoomIn"
+                     style="visibility: visible; animation-name: zoomIn;">
+                    <div class="div_aut">作者：LIAO, WEN-HONG</div>
+                    <div class="div_aut">
+                        巴哈姆特：
+                        <a href="https://home.gamer.com.tw/homeindex.php?owner=hbl917070"
+                           target="_blank">hbl917070（深海異音）</a>
+                    </div>
+                    <div class="div_aut">
+                        信箱：
+                        <a href="mailto:hbl917070@gmail.com">hbl917070@gmail.com</a>
+                    </div>
 
-        }
+                    <div style="text-align: center">
+                        <a class="bottom_img"
+                           target="_blank"
+                           href="https://home.gamer.com.tw/homeindex.php?owner=hbl917070">
+                            <img src="imgs/baha.png" alt="巴哈姆特" />
+                        </a>
+                        <a class="bottom_img"
+                           target="_blank"
+                           href="mailto:hbl917070@gmail.com">
+                            <img src="imgs/gmail.png" alt="Gmail" />
+                        </a>
+                        <a class="bottom_img"
+                           target="_blank"
+                           href="https://github.com/hbl917070/CaptureExplorer">
+                            <img src="imgs/github.png" alt="Github" />
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- p_about 結束 -->
+    <!-- p_other 開始 -->
+    <div id="p_other" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                其他作品
+            </h1>
+        </div>
+
+        <div class="page_content">
+            <h2 class="page_box_title">其他作品</h2>
+            <div class="page_box">456+</div>
+        </div>
+    </div>
+    <!-- p_other 結束 -->
+    <!-- p_99 開始 -->
+    <div id="p_99" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                Home
+            </h1>
+        </div>
+
+        <div class="page_content">
+            <h2 class="page_box_title">首頁</h2>
+            <div class="page_box">
+                <!-- Switch -->
+                <div class="switch">
+                    <label>
+                        Off <input type="checkbox" /> <span class="lever"></span> On
+                    </label>
+                </div>
+
+                <form action="#">
+                    <div class="file-field input-field">
+                        <div class="btn"><span>File</span> <input type="file" /></div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" />
+                        </div>
+                    </div>
+                </form>
+
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="test5" min="0" max="100" />
+                    </p>
+                </form>
+            </div>
+
+            <a class="waves-effect waves-light btn-large">
+                <i class="material-icons right">cloud</i>button
+            </a>
+        </div>
+    </div>
+    <!-- p_99 結束 -->
+    <!-- 手機版側邊選單 -->
+    <div id="slide-out" class="sidenav">
+
+        <img id="menu_pc_logo" src="imgs/logo_256.png" />
 
 
-        //
-        //
-        //
-        function fun_載入圖片(src) {
+        <div class="main_l_item_title">功能</div>
+        <a class="main_l_item waves-effect" id="item_home" href="#p_home">
+            首頁
+        </a>
+        <a class="main_l_item waves-effect" id="item_1" href="#p_1">
+            隱形圖片
+        </a>
+        <a class="main_l_item waves-effect" id="item_2" href="#p_2">
+            偽裝圖片
+        </a>
 
-            //var obj_img = document.getElementById("img");//載入圖片
-            var obj_img = document.createElement("img");
+        <div class="main_l_item_hr"></div>
 
-            obj_img.src = src;
-            obj_img.onload = function () {
+        <div class="main_l_item_title">作者</div>
+        <a class="main_l_item waves-effect" id="item_about" href="#p_about">
+            hbl917070(深海異音)
+        </a>
+        <!--<a class="main_l_item waves-effect"
+         id="item_other">
+        其他作品
+    </a>-->
+
+        <div class="main_l_item_hr"></div>
+
+        <div class="main_l_item_title">其他</div>
+        <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
+        <a class="main_l_item waves-effect " href="" target="_blank">討論區</a>
 
 
-                var wid = obj_img.naturalWidth;
-                var hei = obj_img.naturalHeight;
+        <!--<li>
+        <a href="#!">
+            <i class="material-icons">cloud</i>First Link With Icon
+        </a>
+    </li>
 
+    <li><a href="#!">Second Link</a></li>
 
-                //避免圖太大
-                var max_size = 1000;
-                if (document.getElementById("ch_max_1000").checked) {//如果圖片太大，就先縮小在進行轉換
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
+    </div>
 
-                    if (wid > max_size || hei > max_size) {
-                        var w01 = wid / max_size;
-                        var h01 = hei / max_size;
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
-                        if (w01 > h01) {
-                            wid = wid / w01;
-                            hei = hei / w01;
-                        } else {
-                            wid = wid / h01;
-                            hei = hei / h01;
+    <!-- MiniColors -->
+    <script src="jQuery-MiniColors/jquery.minicolors.min.js"></script>
+    <link rel="stylesheet" href="jQuery-MiniColors/jquery.minicolors.css" />
+
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/nouislider.min.js"></script>
+
+    <script type="text/javascript" src="js/window.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".color_sel").each(function () {
+                //
+                // Dear reader, it's actually very easy to initialize MiniColors. For example:
+                //
+                //  $(selector).minicolors();
+                //
+                // The way I've done it below is just for the demo, so don't get confused
+                // by it. Also, data- attributes aren't supported at this time...they're
+                // only used for this demo.
+                //
+                $(this).minicolors({
+                    control: $(this).attr("data-control") || "hue",
+                    defaultValue: $(this).attr("data-defaultValue") || "",
+                    format: $(this).attr("data-format") || "hex",
+                    keywords: $(this).attr("data-keywords") || "",
+                    inline: $(this).attr("data-inline") === "true",
+                    letterCase: $(this).attr("data-letterCase") || "lowercase",
+                    opacity: $(this).attr("data-opacity"),
+                    position: $(this).attr("data-position") || "bottom left",
+                    swatches: $(this).attr("data-swatches")
+                        ? $(this)
+                            .attr("data-swatches")
+                            .split("|")
+                        : [],
+                    change: function (value, opacity) {
+                        if (!value) return;
+                        if (opacity) value += ", " + opacity;
+                        if (typeof console === "object") {
+                            console.log(value);
                         }
-                    }
-
-                    //設定canvas物件
-                    var can = document.getElementById("can");
-                    can.width = wid;
-                    can.height = hei;
-                    c = can.getContext("2d");
-                    c.drawImage(obj_img, 0, 0, wid, hei);
-                    obj_img.src = can.toDataURL('image/png', 0.8);//輸出成圖片
-
-                    obj_img.onload = function () {
-
-                        fun(obj_img);//圖片載入完成後執行轉換
-                        document.getElementById("img").src = src;
-
-                    }
-
-                } else {//不縮小圖片直接進行轉換
-
-                    fun(obj_img);//圖片載入完成後執行轉換
-                    document.getElementById("img").src = src;
-                }
-
-                document.getElementById("file_input").value = "";//避免無法開啟相同的圖片
-
-            }
-
-        }
-
-        ///
-        /// 執行轉換
-        ///
-        function fun(obj_img) {
-
-            //取得圖片物件
-            var wid = obj_img.naturalWidth;
-            var hei = obj_img.naturalHeight;
-
-            //原圖的canvas物件
-            var can = document.getElementById("can");
-            can.width = wid;
-            can.height = hei;
-            c = can.getContext("2d");
-            c.drawImage(obj_img, 0, 0, wid, hei);
-
-            //要被寫入的canvas物件
-            var can_2 = document.getElementById("can_2");
-            can_2.width = wid;
-            can_2.height = hei;
-            c_2 = can_2.getContext("2d");
-
-
-            //轉換
-            var s = c.getImageData(0, 0, wid, hei);//從原圖取得每個像素點
-            var r = c_2.createImageData(wid, hei);//新建一個空白的
-
-
-            //轉換的屬性
-            var bool_反轉 = document.getElementById("ch_reverse").checked;
-            var col_r = parseInt(document.getElementById("col").value.substr(0, 2), 16);
-            var col_g = parseInt(document.getElementById("col").value.substr(2, 2), 16);
-            var col_b = parseInt(document.getElementById("col").value.substr(4, 2), 16);
-
-
-            for (var i = 0; i < wid; i++) {
-                for (var j = 0; j < hei; j++) {
-
-                    var k = (wid * j + i) * 4;
-                    r.data[k + 0] = col_r;//r
-                    r.data[k + 1] = col_g;//g
-                    r.data[k + 2] = col_b;//b
-                    //r.data[k + 3] = s.data[k];//使用r來判斷深淺
-
-                    var gray = (s.data[k + 0] + s.data[k + 1] + s.data[k + 2]) / 3;//灰階
-                    if (bool_反轉) {
-                        r.data[k + 3] = 255 - gray;//a
-                    } else {
-                        r.data[k + 3] = gray;//a
-                    }
-                }
-            }
-
-            c_2.getImageData(0, 0, wid, hei);//不知為啥手機版的chrome需要這行，不然會有底色是灰色的BUG
-
-            c_2.putImageData(r, 0, 0);//繪製canvas
-            document.getElementById("img2").src = can_2.toDataURL('image/png', 0.8);//輸出成圖片
-
-
-            c.clearRect(0, 0, wid, hei);  //清空
-            c_2.clearRect(0, 0, wid, hei);  //清空
-        }
-
-
+                    },
+                    theme: "bootstrap"
+                });
+            });
+        });
     </script>
-
-
-
-    <br>
-    說明：將圖片轉換成單色的半透明隱形圖片。<br>
-    版本：1.0.71
-
-    <ul>
-        <li>
-            作者：<a href="https://home.gamer.com.tw/homeindex.php?owner=hbl917070" target="_blank">hbl917070 (深海異音)</a>
-        </li>
-        <li>如果是手機，盡量不要丟很大的圖片然後又把最大限制的勾拿掉，不然可能會讓瀏覽器閃退。</li>
-        <li>電腦版右鍵儲存圖片；手機版長按圖片儲存。</li>
-        <li>討論區：<a href="https://forum.gamer.com.tw/C.php?bsn=60076&snA=3879307" target="_blank">討論區</a></li>
-    </ul>
-
-
-
-
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-56186804-2', 'auto');
-	  ga('send', 'pageview');
-
-	</script>
-	
-	
 </body>
 </html>

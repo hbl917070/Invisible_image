@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery MiniColors</title>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+  <!-- Bootstrap 3 -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- MiniColors -->
+  <script src="jquery.minicolors.min.js"></script>
+  <link rel="stylesheet" href="jquery.minicolors.css">
+
+  <style>
+  body { background-color:#fafafa;}
+    dl {
+      margin: 20px 0;
+    }
+    dt {
+      font-size: 120%;
+    }
+    dd {
+      padding: 10px 20px 20px 20px;
+    }
+    dd:last-child {
+      border-bottom: none;
+    }
+    code {
+      color: black;
+      border: none;
+      background: rgba(128, 128, 128, .1);
+    }
+    pre {
+      background: #f8f8f8;
+      border: none;
+      color: #333;
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 50px;
+    }
+    h3 {
+      color: #aaa;
+    }
+    .jumbotron {
+      padding: 40px;
+    }
+    .jumbotron h1 {
+      margin-top: 0;
+    }
+    .jumbotron p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+
+  <script>
+    $(document).ready( function() {
+
+      $('.demo').each( function() {
+        //
+        // Dear reader, it's actually very easy to initialize MiniColors. For example:
+        //
+        //  $(selector).minicolors();
+        //
+        // The way I've done it below is just for the demo, so don't get confused
+        // by it. Also, data- attributes aren't supported at this time...they're
+        // only used for this demo.
+        //
+        $(this).minicolors({
+          control: $(this).attr('data-control') || 'hue',
+          defaultValue: $(this).attr('data-defaultValue') || '',
+          format: $(this).attr('data-format') || 'hex',
+          keywords: $(this).attr('data-keywords') || '',
+          inline: $(this).attr('data-inline') === 'true',
+          letterCase: $(this).attr('data-letterCase') || 'lowercase',
+          opacity: $(this).attr('data-opacity'),
+          position: $(this).attr('data-position') || 'bottom left',
+          swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+          change: function(value, opacity) {
+            if( !value ) return;
+            if( opacity ) value += ', ' + opacity;
+            if( typeof console === 'object' ) {
+              console.log(value);
+            }
+          },
+          theme: 'bootstrap'
+        });
+
+      });
+
+    });
+  </script>
+</head>
+<body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/other/Color-Picker-Plugin-jQuery-MiniColors/">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+  <div class="container" style="margin: 150px auto;">
+    <div class="col-12">
+
+      <!-- Intro -->
+      <div id="intro" class="jumbotron">
+        <h1>jQuery MiniColors Plugin Example</h1>
+       
+      </div>
+
+      <!-- Control types -->
+      <h3>Control Types</h3>
+      <div class="well">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+
+            <div class="form-group">
+              <label for="hue-demo">Hue (default)</label>
+              <input type="text" id="hue-demo" class="form-control demo" data-control="hue" value="#ff6161">
+            </div>
+            <div class="form-group">
+              <label for="saturation-demo">Saturation</label>
+              <input type="text" id="saturation-demo" class="form-control demo" data-control="saturation" value="#0088cc">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="brightness-demo">Brightness</label>
+              <input type="text" id="brightness-demo" class="form-control demo" data-control="brightness" value="#00ffff">
+            </div>
+            <div class="form-group">
+              <label for="wheel-demo">Wheel</label>
+              <input type="text" id="wheel-demo" class="form-control demo" data-control="wheel" value="#ff99ee">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input modes -->
+      <h3>Input Modes</h3>
+      <div class="well">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="text-field">Text field</label>
+              <br>
+              <input type="text" id="text-field" class="form-control demo" value="#70c24a">
+            </div>
+            <div class="form-group">
+              <label for="hidden-input">Hidden Input</label>
+              <br>
+              <input type="hidden" id="hidden-input" class="demo" value="#db913d">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="inline">Inline</label>
+              <br>
+              <input type="text" id="inline" class="form-control demo" data-inline="true" value="#4fc8db">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Positions -->
+      <h3>Positions</h3>
+      <div class="well">
+        <p>
+          Valid positions include <code>bottom left</code>, <code>bottom right</code>, <code>top
+          left</code>, and <code>top right</code>.
+        </p>
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="position-bottom-left">bottom left (default)</label>
+              <input type="text" id="position-bottom-left" class="form-control demo" data-position="bottom left" value="#0088cc">
+            </div>
+            <div class="form-group">
+              <label for="position-top-left">top left</label>
+              <input type="text" id="position-top-left" class="form-control demo" data-position="top left" value="#0088cc">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="position-bottom-right">bottom right</label>
+              <input type="text" id="position-bottom-right" class="form-control demo" data-position="bottom right" value="#0088cc">
+            </div>
+            <div class="form-group">
+              <label for="position-top-right">top right</label>
+              <input type="text" id="position-top-right" class="form-control demo" data-position="top right" value="#0088cc">
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+          </div>
+        </div>
+      </div>
+
+      <!-- RGB(A) -->
+      <h3>RGB(A)</h3>
+      <div class="well">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="rgb">RGB</label>
+              <br>
+              <input type="text" id="rgb" class="form-control demo" data-format="rgb" value="rgb(33, 147, 58)">
+              <span class="help-block">
+                RGB input can be assigned by setting the <code>format</code> option
+                to <code>rgb</code>.
+              </span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="rgba">RGBA</label>
+              <br>
+              <input type="text" id="rgba" class="form-control demo" data-format="rgb" data-opacity=".5" value="rgba(52, 64, 158, 0.5)">
+              <span class="help-block">
+                RGBA input can be assigned by setting the <code>format</code>
+                option to <code>rgb</code> and <code>opacity</code> option to
+                <code>true</code>.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- and more -->
+      <h3>&hellip;and more!</h3>
+      <div class="well">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="opacity">Opacity</label>
+              <br>
+              <input type="text" id="opacity" class="form-control demo" data-opacity=".5" value="#766fa8">
+              <span class="help-block">
+                Opacity can be assigned by including the <code>data-opacity</code>
+                attribute or by setting the <code>opacity</code> option to
+                <code>true</code>.
+              </span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="keywords">Keywords</label>
+              <br>
+              <input type="text" id="keywords" class="form-control demo" data-keywords="transparent, initial, inherit" value="transparent">
+              <span class="help-block">
+                CSS-wide keywords can be assigned by setting the <code>keywords</code>
+                option to a comma-separated list of valid keywords: <code>transparent,
+                initial, inherit</code>.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="default-value">Default Value</label>
+              <br>
+              <input type="text" id="default-value" class="form-control demo" data-defaultValue="#ff6600">
+              <span class="help-block">
+                This field has a default value assigned to it, so it will never be empty.
+              </span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="letter-case">Letter Case</label>
+              <br>
+              <input type="text" id="letter-case" class="form-control demo" data-letterCase="uppercase" value="#abcdef">
+              <span class="help-block">
+                This field will always be uppercase.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="input-group">Input Groups</label>
+              <div class="input-group">
+                <input type="text" id="input-group" class="form-control demo" value="#ff0000"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Button</button>
+                </span>
+              </div>
+              <span class="help-block">
+                Example using Bootstrap's input groups.
+              </span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="more-input-group">More Input Groups</label>
+              <div class="input-group">
+                <span class="input-group-addon">Color</span>
+                <input type="text" id="more-input-group" class="form-control demo" value="#ff0000"/>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Button</button>
+                </span>
+              </div>
+              <span class="help-block">
+                Input group example with addon.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="letter-case">Swatches</label>
+              <br>
+              <input type="text" id="swatches" class="form-control demo" data-swatches="#ef9a9a|#90caf9|#a5d6a7|#fff59d|#ffcc80|#bcaaa4|#eeeeee|#f44336|#2196f3|#4caf50|#ffeb3b|#ff9800|#795548|#9e9e9e" value="#abcdef">
+              <span class="help-block">
+                Example with swatches.
+              </span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-4 col-12">
+            <div class="form-group">
+              <label for="letter-case">Swatches and opacity</label>
+              <br>
+              <input type="text" id="swatches" class="form-control demo" data-format="rgb" data-opacity="1" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="rgba(14, 206, 235, .5)">
+              <span class="help-block">
+                Example with swatches and opacity.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <h2 id="license">License</h2>
+      <p>
+        Licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a>,
+        same as <a href="https://jquery.org/license/">jQuery</a>.
+      </p>
+      <p>
+        &copy;2013 - 2017 <a href="http://www.abeautifulsite.net/" rel="nofollow" target="_blank">A Beautiful Site, LLC.</a>
+      </p>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
