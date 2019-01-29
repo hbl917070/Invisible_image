@@ -119,6 +119,35 @@ function func_tabs_change(item_name) {
 for (var i = 0; i < ar_item_name.length; i++) {
   getID("main_r").appendChild(getID(ar_item_name[i]));
 }
+
+
+//初始化顏色選擇器
+$(".color_sel").each(function() {
+  $(this).minicolors({
+    control: $(this).attr("data-control") || "hue",
+    defaultValue: $(this).attr("data-defaultValue") || "",
+    format: $(this).attr("data-format") || "hex",
+    keywords: $(this).attr("data-keywords") || "",
+    inline: $(this).attr("data-inline") === "true",
+    letterCase: $(this).attr("data-letterCase") || "lowercase",
+    opacity: $(this).attr("data-opacity"),
+    position: $(this).attr("data-position") || "bottom left",
+    swatches: $(this).attr("data-swatches")
+      ? $(this)
+          .attr("data-swatches")
+          .split("|")
+      : [],
+    change: function(value, opacity) {
+      if (!value) return;
+      if (opacity) value += ", " + opacity;
+      if (typeof console === "object") {
+        console.log(value);
+      }
+    },
+    theme: "bootstrap"
+  });
+});
+
 //func_tabs_change("p_home");
 
 //--------------------
@@ -236,7 +265,7 @@ function C_隱形圖片() {
   function func_產生隱形圖片() {
     var p2_img_1 = getID("p1_img");
 
-    if (p2_img_1.src=="") {
+    if (p2_img_1.src == "") {
       M.toast({ html: "尚未選擇圖片" });
       return;
     }

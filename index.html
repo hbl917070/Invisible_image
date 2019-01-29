@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>隱形圖片產生器</title>
+    <title>隱形圖片 產生器</title>
 
     <!--手機自動縮放版面-->
     <meta name="viewport"
@@ -23,8 +23,7 @@
 
 
     <!--Import Google Icon Font-->
-    <link href="css/icon.css"
-          rel="stylesheet" />
+    <link href="css/icon.css" rel="stylesheet" />
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="css/nouislider.min.css" media="screen,projection" />
@@ -68,7 +67,7 @@
 
             <div class="main_l_item_title">其他</div>
             <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
-            <a class="main_l_item waves-effect " href="" target="_blank">討論區</a>
+            <a class="main_l_item waves-effect " href="https://forum.gamer.com.tw/C.php?bsn=60076&snA=4936349" target="_blank">討論區</a>
         </div>
         <div id="main_r"></div>
     </div>
@@ -129,7 +128,7 @@
             </h1>
         </div>
 
-      
+
 
         <div class="page_content">
             <h2 class="page_box_title">說明</h2>
@@ -160,14 +159,14 @@
                     </div>
                     <div style="float:left; margin-left:10px;" id="p1_img_size"></div>
                 </div>
-    
+
 
             </div>
 
             <h2 class="page_box_title">設定</h2>
             <div class="page_box">
                 <table style="width:350px;" class="table_no_line">
-              
+
                     <tr>
                         <td>限制圖片<br />最大寬度</td>
                         <td style="text-align: right;">
@@ -181,7 +180,6 @@
                                    id="p1_rgba"
                                    class="form-control color_sel"
                                    data-format="rgb"
-                                 
                                    value="rgba(255, 255, 255)" />
                         </td>
                     </tr>
@@ -198,7 +196,7 @@
                         </td>
                     </tr>
 
-             
+
                 </table>
 
                 <br />
@@ -402,7 +400,7 @@
                      style="text-align: center; background-color: rgb(128,128,128)">
 
 
-                    <img id="p2_output_img" 
+                    <img id="p2_output_img"
                          style="margin: 10px; max-width:calc(100% - 20px);" />
 
                 </div>
@@ -454,7 +452,7 @@
                         </a>
                         <a class="bottom_img"
                            target="_blank"
-                           href="https://github.com/hbl917070/CaptureExplorer">
+                           href="https://github.com/hbl917070/Invisible_image">
                             <img src="imgs/github.png" alt="Github" />
                         </a>
                     </div>
@@ -527,7 +525,7 @@
     <!-- 手機版側邊選單 -->
     <div id="slide-out" class="sidenav">
 
-        <img id="menu_pc_logo" src="imgs/logo_256.png" />
+        <img id="menu_phone_logo" src="imgs/logo_256.png" />
 
 
         <div class="main_l_item_title">功能</div>
@@ -541,40 +539,43 @@
             偽裝圖片
         </a>
 
-        <div class="main_l_item_hr"></div>
+
 
         <div class="main_l_item_title">作者</div>
         <a class="main_l_item waves-effect" id="item_about" href="#p_about">
             hbl917070(深海異音)
         </a>
         <!--<a class="main_l_item waves-effect"
-         id="item_other">
-        其他作品
-    </a>-->
+             id="item_other">
+            其他作品
+        </a>-->
 
-        <div class="main_l_item_hr"></div>
+
 
         <div class="main_l_item_title">其他</div>
         <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
         <a class="main_l_item waves-effect " href="" target="_blank">討論區</a>
 
 
+        <div style="height:50px;"></div>
+
+
         <!--<li>
-        <a href="#!">
-            <i class="material-icons">cloud</i>First Link With Icon
-        </a>
-    </li>
+            <a href="#!">
+                <i class="material-icons">cloud</i>First Link With Icon
+            </a>
+        </li>
 
-    <li><a href="#!">Second Link</a></li>
+        <li><a href="#!">Second Link</a></li>
 
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
     </div>
 
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 
-    <!-- MiniColors -->
+    <!-- MiniColors 顏色選擇器 -->
     <script src="jQuery-MiniColors/jquery.minicolors.min.js"></script>
     <link rel="stylesheet" href="jQuery-MiniColors/jquery.minicolors.css" />
 
@@ -583,43 +584,20 @@
 
     <script type="text/javascript" src="js/window.js"></script>
 
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56186804-2"></script>
     <script>
-        $(document).ready(function () {
-            $(".color_sel").each(function () {
-                //
-                // Dear reader, it's actually very easy to initialize MiniColors. For example:
-                //
-                //  $(selector).minicolors();
-                //
-                // The way I've done it below is just for the demo, so don't get confused
-                // by it. Also, data- attributes aren't supported at this time...they're
-                // only used for this demo.
-                //
-                $(this).minicolors({
-                    control: $(this).attr("data-control") || "hue",
-                    defaultValue: $(this).attr("data-defaultValue") || "",
-                    format: $(this).attr("data-format") || "hex",
-                    keywords: $(this).attr("data-keywords") || "",
-                    inline: $(this).attr("data-inline") === "true",
-                    letterCase: $(this).attr("data-letterCase") || "lowercase",
-                    opacity: $(this).attr("data-opacity"),
-                    position: $(this).attr("data-position") || "bottom left",
-                    swatches: $(this).attr("data-swatches")
-                        ? $(this)
-                            .attr("data-swatches")
-                            .split("|")
-                        : [],
-                    change: function (value, opacity) {
-                        if (!value) return;
-                        if (opacity) value += ", " + opacity;
-                        if (typeof console === "object") {
-                            console.log(value);
-                        }
-                    },
-                    theme: "bootstrap"
-                });
-            });
-        });
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-56186804-2');
     </script>
+
+
 </body>
 </html>

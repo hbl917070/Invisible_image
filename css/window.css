@@ -82,7 +82,11 @@ body {
     margin: 20px auto;
     display: block;
 }
-
+#menu_phone_logo {
+    width: 80px;
+    margin: 10px auto;
+    display: block;
+}
 #main_r {
     margin-left: 240px;
 }
@@ -210,9 +214,24 @@ input[type="range"] {
     }
 
 
-/**/
-
+/*首頁-內文標題*/
 .p_home_title {
     font-size: 30px;
         margin:10px 0px;
+}
+
+/*避免手機選擇顏色時捲動頁面*/
+.minicolors-panel {
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+/*避免圖示被選取*/
+.material-icons {
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
