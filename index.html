@@ -55,7 +55,7 @@
             <div class="main_l_item_hr"></div>
 
             <div class="main_l_item_title">作者</div>
-            <a class="main_l_item waves-effect" id="item_about" href="#p_about">
+            <a class="main_l_item waves-effect" id="item_author" href="#p_author">
                 hbl917070(深海異音)
             </a>
             <!--<a class="main_l_item waves-effect"
@@ -66,11 +66,65 @@
             <div class="main_l_item_hr"></div>
 
             <div class="main_l_item_title">其他</div>
+            <a class="main_l_item waves-effect" id="item_about" href="#p_about">
+                版本資訊
+            </a>
             <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
             <a class="main_l_item waves-effect " href="https://forum.gamer.com.tw/C.php?bsn=60076&snA=4936349" target="_blank">討論區</a>
         </div>
         <div id="main_r"></div>
     </div>
+
+
+    <!-- 手機版側邊選單 -->
+    <div id="slide-out" class="sidenav">
+
+        <img id="menu_phone_logo" src="imgs/logo_256.png" />
+
+        <div class="main_l_item_title">功能</div>
+        <a class="main_l_item waves-effect" id="item_home" href="#p_home">
+            首頁
+        </a>
+        <a class="main_l_item waves-effect" id="item_1" href="#p_1">
+            隱形圖片
+        </a>
+        <a class="main_l_item waves-effect" id="item_2" href="#p_2">
+            偽裝圖片
+        </a>
+
+        <div class="main_l_item_title">作者</div>
+        <a class="main_l_item waves-effect" id="item_author" href="#p_author">
+            hbl917070(深海異音)
+        </a>
+
+
+        <div class="main_l_item_title">其他</div>
+        <a class="main_l_item waves-effect" id="item_about" href="#p_about">
+            版本資訊
+        </a>
+        <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
+        <a class="main_l_item waves-effect " href="https://forum.gamer.com.tw/C.php?bsn=60076&snA=4936349" target="_blank">討論區</a>
+
+
+        <div style="height:50px;"></div>
+
+
+        <!--<li>
+            <a href="#!">
+                <i class="material-icons">cloud</i>First Link With Icon
+            </a>
+        </li>
+
+        <li><a href="#!">Second Link</a></li>
+
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
+    </div>
+
+
+
+
 
     <!-- p_home 開始 -->
     <div id="p_home" class="page">
@@ -217,7 +271,7 @@
             </div>
 
             <h2 class="page_box_title">輸出</h2>
-            <div class="page_box">
+            <div class="page_box" id="p1_page_box_output" style="display:none">
                 嘗試拖曳滑桿，觀看圖片在黑色與白色的地方呈現的效果
 
                 <table style="width: 280px;">
@@ -243,10 +297,14 @@
                          style="margin: 10px; max-width:calc(100% - 20px);" />
 
                 </div>
-
+                <br>
                 <a href="" id="p1_download" download="df.png" target="_blank" class="waves-effect waves-light btn">
                     下載圖片 <i class="material-icons left">cloud_download</i>
                 </a>
+                <br>  <br>
+                如果無法順利下載圖片，請手動儲存圖片<br>
+                電腦：對圖片「右鍵」→另存圖片<br>
+                手機：對圖片「長按」→下載圖片<br>
             </div>
         </div>
 
@@ -317,8 +375,46 @@
 
             </div>
 
-            <h2 class="page_box_title">設定</h2>
-            <div class="page_box">
+            <h2 class="page_box_title">
+                設定
+                <a class="waves-effect waves-light modal-trigger" style="font-size:16px;" href="#modal1">(查看設定技巧)</a>
+
+            </h2>
+            <div class="page_box" style="overflow:auto">
+
+
+
+
+                <!-- 設定技巧 訊息方塊 Modal Structure -->
+                <div id="modal1" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>設定技巧</h4>
+                        <p>
+                            如果圖片一張很大，一張很小<br>
+                            可以利用「限制圖片最大寬度」來解決<br>
+                            例如：一張圖寬度有2000，另一張只有300<br>
+                            那麼就把寬度限制設定成300<br>
+                            <br>
+                            如果合成出來後，感覺在白底的清晰度不夠<br>
+                            可以嘗試調整填充顏色的透明度<br>
+                            rgba 最後的 a 就是透明度，值介於 0~1<br>
+                            <img src="imgs/p2_01.png" style="box-shadow: 0px 0px 3px rgba(0,0,0,0.5);" />
+                            <br><br>
+                            也可以利用「反轉填充」來讓圖片有類似「負片」的效果<br>
+                            對於一些很亮或是很暗的圖片特別有效
+                            <br> <br>
+                            像是可以設定成這樣(不見得適用於所有圖片)<br>
+                            <img src="imgs/p2_03.png" style="box-shadow: 0px 0px 3px rgba(0,0,0,0.5);" />
+
+
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="modal-close waves-effect waves-green btn-flat" onclick="instances_modal[0].close()">關閉</a>
+                    </div>
+                </div>
+
+
                 <table style="width:350px;" class="table_no_line">
                     <tr>
                         <td>圖片貼齊</td>
@@ -359,7 +455,7 @@
                         <td style="text-align: right;">
                             <div class="switch">
                                 <label>
-                                    <input type="checkbox" id="p2_ch_reverse_01" />
+                                    <input type="checkbox" id="p2_ch_reverse_01" checked />
                                     <span class="lever"></span>
                                 </label>
                             </div>
@@ -384,10 +480,15 @@
                 <a class="waves-effect waves-light btn" id="p2_but_run">
                     產生圖片 <i class="material-icons left">done</i>
                 </a>
+
+
+
+
+
             </div>
 
             <h2 class="page_box_title">輸出</h2>
-            <div class="page_box">
+            <div class="page_box" id="p2_page_box_output" style="display:none">
                 嘗試拖曳滑桿，觀看圖片在黑色與白色的地方呈現的效果
 
                 <table style="width: 280px;">
@@ -409,15 +510,18 @@
                 <div id="p2_div_output"
                      style="text-align: center; background-color: rgb(128,128,128)">
 
-
                     <img id="p2_output_img"
                          style="margin: 10px; max-width:calc(100% - 20px);" />
 
                 </div>
-
+                <br>
                 <a href="" id="p2_download" download="df.png" target="_blank" class="waves-effect waves-light btn">
                     下載圖片 <i class="material-icons left">cloud_download</i>
                 </a>
+                <br>  <br>
+                如果無法順利下載圖片，請手動儲存圖片<br>
+                電腦：對圖片「右鍵」→另存圖片<br>
+                手機：對圖片「長按」→下載圖片<br>
             </div>
         </div>
     </div>
@@ -429,9 +533,70 @@
                 <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
                     <i class="material-icons">menu</i>
                 </a>
+                關於
+            </h1>
+        </div>
+
+        <div class="page_content">
+            <h2 class="page_box_title">關於</h2>
+            <div class="page_box">
+
+                <div style="text-align:center">
+                    <img src="imgs/logo_256.png" style="width:120px" />
+                    <br>
+                    <h2 style="font-size:24px;margin:0px;">隱形圖片 產生器</h2>
+                </div>
+
+
+                <br> <br>
+                本版資訊： <br>2.0.1
+                <br>  <br>  <br>
+
+                本專案包含以下套件：  <br>
+                <a href="https://github.com/Dogfalo/materialize" target="_blank"> Materialize</a>：
+                一套符合 Material Design 設計 的網頁前端框架。
+                <br>
+                <a href="https://github.com/leongersen/noUiSlider" target="_blank"> noUiSlider</a>：
+                一個輕量級JavaScript範圍滑塊
+                <br>
+                <a href="https://github.com/jquery/jquery" target="_blank"> jQuery</a>：
+                一套跨瀏覽器的JavaScript函式庫，簡化HTML與JavaScript之間的操作。
+                <br>
+                <a href="https://github.com/claviska/jquery-minicolors" target="_blank"> jQuery MiniColors</a>：
+                一個基於jQuery的 顏色選擇器
+
+            </div>
+        </div>
+    </div>
+    <!-- p_about 結束 -->
+    <!-- p_other 開始 -->
+    <div id="p_other" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                其他作品
+            </h1>
+        </div>
+
+        <div class="page_content">
+            <h2 class="page_box_title">其他作品</h2>
+            <div class="page_box">456+</div>
+        </div>
+    </div>
+    <!-- p_other 結束 -->
+    <!-- p_author 開始 -->
+    <div id="p_author" class="page">
+        <div class="page_title">
+            <h1>
+                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
                 作者
             </h1>
         </div>
+
 
         <div class="page_content">
             <h2 class="page_box_title">作者</h2>
@@ -471,24 +636,7 @@
             </div>
         </div>
     </div>
-    <!-- p_about 結束 -->
-    <!-- p_other 開始 -->
-    <div id="p_other" class="page">
-        <div class="page_title">
-            <h1>
-                <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only">
-                    <i class="material-icons">menu</i>
-                </a>
-                其他作品
-            </h1>
-        </div>
-
-        <div class="page_content">
-            <h2 class="page_box_title">其他作品</h2>
-            <div class="page_box">456+</div>
-        </div>
-    </div>
-    <!-- p_other 結束 -->
+    <!-- p_author 結束 -->
     <!-- p_99 開始 -->
     <div id="p_99" class="page">
         <div class="page_title">
@@ -532,56 +680,6 @@
         </div>
     </div>
     <!-- p_99 結束 -->
-    <!-- 手機版側邊選單 -->
-    <div id="slide-out" class="sidenav">
-
-        <img id="menu_phone_logo" src="imgs/logo_256.png" />
-
-
-        <div class="main_l_item_title">功能</div>
-        <a class="main_l_item waves-effect" id="item_home" href="#p_home">
-            首頁
-        </a>
-        <a class="main_l_item waves-effect" id="item_1" href="#p_1">
-            隱形圖片
-        </a>
-        <a class="main_l_item waves-effect" id="item_2" href="#p_2">
-            偽裝圖片
-        </a>
-
-
-
-        <div class="main_l_item_title">作者</div>
-        <a class="main_l_item waves-effect" id="item_about" href="#p_about">
-            hbl917070(深海異音)
-        </a>
-        <!--<a class="main_l_item waves-effect"
-             id="item_other">
-            其他作品
-        </a>-->
-
-
-
-        <div class="main_l_item_title">其他</div>
-        <a class="main_l_item waves-effect " href="https://github.com/hbl917070/Invisible_image" target="_blank">GitHub</a>
-        <a class="main_l_item waves-effect " href="https://forum.gamer.com.tw/C.php?bsn=60076&snA=4936349" target="_blank">討論區</a>
-
-
-        <div style="height:50px;"></div>
-
-
-        <!--<li>
-            <a href="#!">
-                <i class="material-icons">cloud</i>First Link With Icon
-            </a>
-        </li>
-
-        <li><a href="#!">Second Link</a></li>
-
-        <li><div class="divider"></div></li>
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
-    </div>
 
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 

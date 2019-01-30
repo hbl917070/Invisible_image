@@ -28,7 +28,11 @@ function Router() {
   this.refresh = function() {
     this.curUrl = location.hash.slice(1) || "/";
 
-    this.routes[this.curUrl]();
+    if (this.routes[this.curUrl] == undefined) {
+      this.routes[""]();
+    } else {
+      this.routes[this.curUrl]();
+    }
   };
 
   this.init = function() {
@@ -40,7 +44,9 @@ function Router() {
 //初始化路由
 var R = new Router();
 R.init();
-
+R.route("", function() {
+  func_tabs_change("p_home");
+});
 R.route("/", function() {
   func_tabs_change("p_home");
 });
@@ -59,69 +65,24 @@ R.route("p_about", function() {
 R.route("p_other", function() {
   func_tabs_change("p_other");
 });
-
-//初始化 select 物件
-document.addEventListener("DOMContentLoaded", function() {
-  var elems = document.querySelectorAll("select");
-  var instances = M.FormSelect.init(elems, options);
+R.route("p_author", function() {
+  func_tabs_change("p_author");
 });
 
-//初始化側邊選單
+//初始化 側邊選單 menu
 var options;
 var elem = document.querySelector(".sidenav");
-var instance = M.Sidenav.init(elem, options);
-$(document).ready(function() {
-  //instance.sidenav();
-});
+var instances_menu = M.Sidenav.init(elem, options);
 
-var ar_item_name = ["p_home", "p_1", "p_2", "p_about", "p_other", "p_99"];
+//初始化 select 物件
+var elems = document.querySelectorAll("select");
+var instances_select = M.FormSelect.init(elems, options);
 
-/**
- *
- * @param {*} item_name
- */
-function func_tabs_change(item_name) {
-  //關閉側邊選單
-  instance.close();
+//初始化 訊息方塊
+var elems = document.querySelectorAll(".modal");
+var instances_modal = M.Modal.init(elems, options);
 
-  //隱藏所有page
-  for (var i = 0; i < ar_item_name.length; i++) {
-    getID(ar_item_name[i]).style.display = "none";
-  }
-
-  //隱藏所有button
-  var ar_but = getClass("main_l_item");
-  for (var i = 0; i < ar_but.length; i++) {
-    ar_but[i].setAttribute("sel", "");
-  }
-
-  //設定選中的button
-  getID("item" + item_name.substr(1, item_name.length - 1)).setAttribute(
-    "sel",
-    "1"
-  );
-
-  //顯示page
-  getID(item_name).style.display = "block";
-  $(window).scrollTop("0");
-
-  //動畫
-  $("#" + item_name + " .page_content").animate(
-    { opacity: 0.6, marginTop: "30px" },
-    0
-  );
-  $("#" + item_name + " .page_content").animate(
-    { opacity: 1, marginTop: "0px" },
-    200
-  );
-}
-
-for (var i = 0; i < ar_item_name.length; i++) {
-  getID("main_r").appendChild(getID(ar_item_name[i]));
-}
-
-
-//初始化顏色選擇器
+//初始化 顏色選擇器
 $(".color_sel").each(function() {
   $(this).minicolors({
     control: $(this).attr("data-control") || "hue",
@@ -147,6 +108,63 @@ $(".color_sel").each(function() {
     theme: "bootstrap"
   });
 });
+
+//初始化 頁面選擇 
+var ar_item_name = [
+  "p_home",
+  "p_1",
+  "p_2",
+  "p_author",
+  "p_about",
+  "p_other",
+  "p_99"
+];
+
+/**
+ *
+ * @param {*} item_name
+ */
+function func_tabs_change(item_name) {
+  //關閉側邊選單
+  instances_menu.close();
+
+  //隱藏所有page
+  for (var i = 0; i < ar_item_name.length; i++) {
+    getID(ar_item_name[i]).style.display = "none";
+  }
+
+  //隱藏所有button
+  var ar_but = getClass("main_l_item");
+  for (var i = 0; i < ar_but.length; i++) {
+    ar_but[i].setAttribute("sel", "");
+  }
+
+  //設定選中的button
+  getID("item" + item_name.substr(1, item_name.length - 1)).setAttribute(
+    "sel",
+    "1"
+  );
+
+  //顯示page
+  getID(item_name).style.display = "block";
+
+  //畫面回到最上面
+  $(window).scrollTop("0");
+
+  //動畫
+  $("#" + item_name + " .page_content").animate(
+    { opacity: 0.6, marginTop: "30px" },
+    0
+  );
+  $("#" + item_name + " .page_content").animate(
+    { opacity: 1, marginTop: "0px" },
+    200
+  );
+}
+
+for (var i = 0; i < ar_item_name.length; i++) {
+  getID("main_r").appendChild(getID(ar_item_name[i]));
+}
 
 //func_tabs_change("p_home");
 
@@ -317,6 +335,7 @@ function C_隱形圖片() {
     can_1.parentNode.removeChild(can_1);
 
     M.toast({ html: "合成完畢" });
+    getID("p1_page_box_output").style.display="block";//第一次執行後，才顯示輸出結果
   }
 
   /**
@@ -477,6 +496,7 @@ function C_隱形圖片() {
         html_img_2.parentNode.removeChild(html_img_2);
 
         M.toast({ html: "合成完畢" });
+        getID("p2_page_box_output").style.display="block";//第一次執行後，才顯示輸出結果
       });
     });
   }

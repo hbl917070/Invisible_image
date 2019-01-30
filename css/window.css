@@ -83,7 +83,7 @@ body {
     display: block;
 }
 #menu_phone_logo {
-    width: 80px;
+    width: 50px;
     margin: 10px auto;
     display: block;
 }
@@ -154,14 +154,14 @@ input[type="range"] {
 
 /*設定的「文字方塊」*/
 .text_nub {
-    font-size: 18px !important;
+    font-size: 16px !important;
     width: 225px !important;
     text-align: center;
 }
 /*設定的「顏色選擇器」*/
 .color_sel {
     width: 180px !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
 }
 
 /*無框線的表格*/
@@ -228,7 +228,6 @@ input[type="range"] {
 
 /*避免圖示被選取*/
 .material-icons {
-
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
